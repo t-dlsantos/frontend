@@ -1,0 +1,73 @@
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-7">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Editar conta</h2>
+
+              <form [formGroup]="signupForm">
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example1cg">Nome</label>
+                  <input type="text" formControlName="name" class="form-control form-control-lg">
+
+                  <!-- ERROR -->
+                  <div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
+                    <div class="text-danger">Nome é obrigatório</div>
+                  </div>
+                  <!-- ERROR -->
+
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3cg">E-mail</label>
+                  <input type="text" formControlName="email" class="form-control form-control-lg">
+
+                  <!-- ERROR -->
+                  <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
+                    <div class="text-danger">Por favor insira um e-mail válido</div>
+                  </div>
+                  <!-- ERROR -->
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3cg">Função</label>
+                  <br>
+                  <select class="form-select" name="funcao" formControlName="funcao">
+                    <option value="engenehiro-fe">Engenheiro de FE</option>
+                    <option value="engenheiro-be">Engenheiro de BE</option>
+                    <option value="analista-de-dados">Analista de dados</option>
+                    <option value="lider-tecnico">Líder Técnico</option>
+                  </select>
+
+                  <!-- ERROR -->
+                  <div *ngIf="signupForm.get('funcao')?.value === 'nothing' && (signupForm.get('funcao')?.dirty || signupForm.get('funcao')?.touched)">
+                    <div class="text-danger">Por favor selecione uma função válida</div>
+                  </div>
+                  <!-- ERROR -->
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4cg">Senha</label>
+                  <input type="text" formControlName="password" class="form-control form-control-lg">
+
+                  <!-- ERROR -->
+                  <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('epasswordmail')?.dirty || signupForm.get('password')?.touched)">
+                    <div class="text-danger">Por favor insira uma senha entre 6 e 15 caracteres</div>
+                  </div>
+                  <!-- ERROR -->
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button (click)="onSubmit()" [disabled]="!signupForm.valid" class="btn btn-success btn-block btn-lg text-body">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
